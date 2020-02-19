@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "bnext-test-client": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bnext-test-client"
+    }
+  },
+  "defaultProject": "bnext-test-client",
+  "cli": {
+    "analytics": "5f95dc6a-ffcf-4c60-9423-9c6292c53d59"
+  }
 }

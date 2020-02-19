@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="container" *ngIf="step === 1">
+    <div class="col-sm-8 offset-sm-2">
+        <form >
+            <label for="arrivalDate" class="col-sm-12">Arrival date:</label>
+            <input type="date" id="arrivalDate" name="arrivalDate" placeholder="arrivalDate"  [(ngModel)]="arrivalDate">
+            
+            <label for="departureDate" class="col-sm-12">Departure date:</label>
+            <input type="date" id="departureDate" name="departureDate" placeholder="departureDate"  [(ngModel)]="departureDate">
+            
+            <label for="adultNumber" class="col-sm-12">Adult number:</label>
+            <input type="number" id="adultNumber" name="adultNumber" placeholder="adultNumber" [(ngModel)]="adultNumber">
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                {{ error }}
+            </div>
+            <input type="button" value="Check availability" (click)="checkAvailability()" class="col-sm-6 offset-sm-3">
+        </form>
+    </div>
+</div>
+
+<div class="container" *ngIf="step === 2">
+    <div class="col-sm-8 offset-sm-2">
+        <p>Where will you travel?</p>
+        <ul class="list-group">                
+            <li *ngFor="let availability of availabilities" class="list-group-item list-group-item-primary active" (click)="contract(availability)">
+                {{ availability.modality.longName }}: ${{ availability.sellPrice }}
+            </li>
+            <br>
+        </ul>
+    </div>
+</div>
+
+<div class="container" *ngIf="step === 3">
+    <div class="col-sm-8 offset-sm-2">
+        <form >
+            <label for="arrivalDate" class="col-sm-12">Arrival date:</label>
+            <input disabled type="text" id="arrivalDate" name="arrivalDate" placeholder="arrivalDate"  [(ngModel)]="arrivalDate">
+            
+            <label for="departureDate" class="col-sm-12">Departure date:</label>
+            <input disabled type="text" id="departureDate" name="departureDate" placeholder="departureDate"  [(ngModel)]="departureDate">
+            
+            <label for="adultNumber" class="col-sm-12">Adult number:</label>
+            <input disabled type="number" id="adultNumber" name="adultNumber" placeholder="adultNumber" [(ngModel)]="adultNumber">
+            <label for="adultNumber" class="col-sm-12">Modality:</label>
+            <input disabled type="text" id="Modality" name="Modality" placeholder="{{ availability.modality.longName }}: ${{ availability.sellPrice }}" >
+            <div *ngFor="let passenger of passengers; let i = index">
+                    <label for="adultNumber{{i}}Name" class="col-sm-12">{{ i + 1 }} Adult name:</label>
+                    <input type="text" id="adultNumber{{i}}Name" name="adultNumber{{i}}Name" placeholder="adultNumber{{i}}Name" [(ngModel)]="passengers[i].name">
+                    <label for="adultNumber{{i}}Surname" class="col-sm-12">{{ i + 1 }} Adult surname:</label>
+                    <input type="text" id="adultNumber{{i}}Surname" name="adultNumber{{i}}Surname" placeholder="adultNumber{{i}}Surname" [(ngModel)]="passengers[i].surname">
+                    <label for="adultNumber{{i}}Age" class="col-sm-12">{{ i + 1}} Adult age:</label>
+                    <input type="number" id="adultNumber{{i}}Age" name="adultNumber{{i}}Age" placeholder="adultNumber{{i}}Age" [(ngModel)]="passengers[i].age">
+            </div>            
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                {{ error }}
+            </div>
+            <input type="button" value="Booking" (click)="booking()" class="col-sm-6 offset-sm-3">
+        </form>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="step === 4">
+        <div class="col-sm-8 offset-sm-2">
+            Thank You! Your booking code is: {{ code }}
+        </div>
+</div>

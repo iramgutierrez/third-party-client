@@ -115,7 +115,7 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text] {
+  input[type=text], input[type=password], input[type=date], input[type=number] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -260,4 +260,9 @@ html {
   #icon {
     width:60%;
   }
+
+  li.active {
+    cursor: pointer;
+    margin: 10px;
+}
   
