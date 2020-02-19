@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DataService {
 
-  private REST_API_SERVER = "http://ec2-13-52-178-200.us-west-1.compute.amazonaws.com";
+  private REST_API_SERVER = "http://ec2-13-52-178-200.us-west-1.compute.amazonaws.com:3001";
 
   constructor(private httpClient: HttpClient) { }
 

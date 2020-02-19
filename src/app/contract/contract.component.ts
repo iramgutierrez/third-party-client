@@ -51,7 +51,7 @@ export class ContractComponent implements OnInit {
     }, error => {
       if (error.status === 400) {
         try {
-          this.error = Object.values(error.error.errors).shift().shift()
+          this.error = Object.values(error.error.errors).shift()[0]
         } catch (e) {
           this.error = 'Server error'
         }
@@ -111,7 +111,7 @@ export class ContractComponent implements OnInit {
       }, error => {
         if (error.status === 400) {
           try {
-            this.error = Object.values(error.error.errors).shift().shift()
+            this.error = Object.values(error.error.errors).shift()[0]
           } catch (e) {
             this.error = 'Server error'
           }
